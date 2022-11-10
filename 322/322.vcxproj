@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="322.cpp" />
     <ClCompile Include="Current_state.cpp" />
+    <ClCompile Include="Dimensions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Current_state.h" />
