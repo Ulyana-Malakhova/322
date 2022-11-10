@@ -58,7 +58,7 @@ void Telephone::change() {
 		if (j == 2) {
 			if (system_t.card == "yes") {
 				current_state.memory -= k;
-				system_t.card == "no";
+				system_t.card = "no";
 			}
 			else
 				cout << "Карты или нет в телефоне, или информация о ней неверна" << endl;

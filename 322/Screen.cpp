@@ -27,5 +27,5 @@ void Screen::display() {
 	cout << endl;
 	cout << "Информация об экране:" << endl;
 	cout << "-диагональ:" << diagonal << endl;
-	cout << " - плотность пикселей:" << pixel << endl;
+	cout << "-плотность пикселей:" << pixel << endl;
 }
