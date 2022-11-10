@@ -44,5 +44,8 @@
     <ClInclude Include="Screen.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="General_data.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
