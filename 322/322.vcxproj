@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="Current_state.h" />
     <ClInclude Include="Dimensions.h" />
+    <ClInclude Include="Screen.h" />
     <ClInclude Include="System_t.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
