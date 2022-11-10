@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="322.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Current_state.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
