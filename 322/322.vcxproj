@@ -142,6 +142,7 @@
     <ClCompile Include="322.cpp" />
     <ClCompile Include="Current_state.cpp" />
     <ClCompile Include="Dimensions.cpp" />
+    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="System_t.cpp" />
   </ItemGroup>
   <ItemGroup>
