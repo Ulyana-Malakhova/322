@@ -1,24 +1,27 @@
 #include "Telephone.h"
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <windows.h>
 using namespace std;
 
+int Telephone::number = 0;
 Telephone::Telephone(Current_state current_state, Dimensions dimensions, System_t system_t, Screen screen, General_data general_data) {
 	this->current_state = current_state;
 	this->dimensions = dimensions;
 	this->system_t = system_t;
 	this->screen = screen;
 	this->general_data = general_data;
+	number++;
 }
 Telephone::Telephone(Current_state current_state) {
 	this->current_state = current_state;
+	number++;
 }
 Telephone::Telephone() {
-
+	number++;
 }
 Telephone::~Telephone() {
-
+	number--;
 }
 void Telephone::read() {
 	current_state.read();
@@ -26,6 +29,9 @@ void Telephone::read() {
 	system_t.read();
 	screen.read();
 	general_data.read();
+}
+void Telephone::number_phone() {
+	cout << "Количество телефонов - " << number << endl;
 }
 void Telephone::display() {
 	current_state.display();
@@ -35,11 +41,15 @@ void Telephone::display() {
 	general_data.display();
 }
 void Telephone::zaryad() {
+	int charge1;
 	cout << "Сколько стало процентов заряда на телефоне?";
-	cin >> current_state.charge;
+	cin >> charge1;
+	current_state.setCharge(charge1);
 }
 void Telephone::change() {
 	int i, t, j, k;
+	int memory1 = current_state.getMemory();
+	string card1 = system_t.getCard();
 	cout << "Изменения с объемом памяти связаны с:" << endl << "1.Изменением состояния карты памяти" << endl << "2.Изменением объема информации" << endl;
 	cin >> i;
 	if (i == 1) {
@@ -48,17 +58,19 @@ void Telephone::change() {
 		cout << "Какой объем памяти у карты?";
 		cin >> k;
 		if (j == 1) {
-			if (system_t.card == "no") {
-				current_state.memory += k;
-				system_t.card = "yes";
+			if (card1 == "no") {
+				memory1 += k;
+				current_state.setMemory(memory1);
+				system_t.setCard("yes");
 			}
 			else
 				cout << "Карта или уже находится в телефоне, или информация о ней неверна" << endl;
 		}
 		if (j == 2) {
-			if (system_t.card == "yes") {
-				current_state.memory -= k;
-				system_t.card = "no";
+			if (card1 == "yes") {
+				memory1 -= k;
+				current_state.setMemory(memory1);
+				system_t.setCard("no");
 			}
 			else
 				cout << "Карты или нет в телефоне, или информация о ней неверна" << endl;
@@ -70,10 +82,71 @@ void Telephone::change() {
 		cout << "Какой объем памяти добавили или удалили?";
 		cin >> k;
 		if (j == 1) {
-			current_state.memory -= k;
+			memory1 -= k;
+			current_state.setMemory(memory1);
 		}
 		if (j == 2) {
-			current_state.memory += k;
+			memory1 += k;
+			current_state.setMemory(memory1);
 		}
 	}
+}
+
+int Telephone::number_calls() {
+	Current_state current_state1 = this->getCurrent_state();
+	int c = current_state1.getCalls();
+	return c;
+}
+Screen Telephone::getScreen() {
+	return screen;
+}
+int screen_percentage(Telephone spisok) {
+	Screen screen1 = spisok.getScreen();
+	Dimensions dimensions1 = spisok.getDimensions();
+	int r1 = screen1.getWidth_s();
+	int r2 = screen1.getHeight_s();
+	int r3 = dimensions1.getWidth();
+	int r4 = dimensions1.getHeight();
+	int r = (r1 * r2 * 100) / (r3 * r4);
+	return r;
+}
+Dimensions Telephone::getDimensions() {
+	return dimensions;
+}
+Current_state Telephone::getCurrent_state() {
+	return current_state;
+}
+int Telephone::number_calls(Current_state current_state1) {
+	int c = current_state1.getCalls();
+	return c;
+}
+int *Telephone::energy_saving(int s) {
+	int f = current_state.getCharge();
+	if (s >= f) {
+		cout << "Включен режим энергосбережения" << endl;
+		current_state.setEnergy("yes");
+	}
+	else {
+		cout << "Заряд телефона больше введенного" << endl;
+		current_state.setEnergy("no");
+	}
+	s -= f;
+	return &s;
+}
+int& Telephone::check_memory(int s) {
+	int f = current_state.getMemory();
+	if (s >= f) {
+		cout << "Еще есть свободная память" << endl;
+	}
+	else
+		cout << "Введенный объем памяти занят. Удалите лишние файлы" << endl;
+	s -= f;
+	return s;
+}
+void Telephone::setCurrent_state(Current_state current_state) {
+	 this->current_state = current_state;
+}
+void Telephone::setCallsCurrent_state(Current_state current_state1) {
+	int c = current_state1.getCalls();
+	current_state.setCalls(c);
 }

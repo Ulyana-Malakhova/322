@@ -1,6 +1,6 @@
 #include "Dimensions.h"
 #include <iostream>
-#include <string.h>
+#include <string>
 using namespace std;
 
 Dimensions::Dimensions(int width, int height, int thickness, int weight) {
@@ -11,9 +11,15 @@ Dimensions::Dimensions(int width, int height, int thickness, int weight) {
 }
 Dimensions::Dimensions(int weight) {
 	this->weight = weight;
+	height = 0;
+	thickness = 0;
+	width = 0;
 }
 Dimensions::Dimensions() {
-
+	weight = 0;
+	height = 0;
+	thickness = 0;
+	width = 0;
 }
 Dimensions::~Dimensions() {
 
@@ -32,8 +38,14 @@ void Dimensions::read() {
 void Dimensions::display() {
 	cout << endl;
 	cout << "Параметры:" << endl;
-	cout << "-ширина:" << width << endl;;
+	cout << "-ширина:" << width << endl;
 	cout << "-высота:" << height << endl;
 	cout << "-толщина:" << thickness << endl;
 	cout << "-вес:" << weight << endl;
+}
+int Dimensions::getWidth() {
+	return width;
+}
+int Dimensions::getHeight() {
+	return height;
 }

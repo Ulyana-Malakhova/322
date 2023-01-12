@@ -1,6 +1,6 @@
 #include "General_data.h"
 #include <iostream>
-#include <string.h>
+#include <string>
 using namespace std;
 
 General_data::General_data(string country, string model, int year) {
@@ -10,9 +10,13 @@ General_data::General_data(string country, string model, int year) {
 }
 General_data::General_data(string model) {
 	this->model = model;
+	country = "country";
+	year = 0;
 }
 General_data::General_data() {
-
+	model = "model";
+	country = "country";
+	year = 0;
 }
 General_data::~General_data() {
 

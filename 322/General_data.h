@@ -1,14 +1,15 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <string.h>
+#include <string>
 using namespace std;
 
 class General_data {
-public:
+private:
 	string country;
 	string model;
 	int year;
+public:
 	General_data(string country, string model, int year);
 	General_data(string model);
 	General_data();
